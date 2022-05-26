@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+
+<h1>Kalkulator Dni:</h1>
+
+<label for="data1">Data Początkowa: </label>
+<input type="date" id="data1">
+
+
+
+<br>
+
+<button onclick="roznica()" id="submit">Oblicz</button>
+<div id="output">Wybierz daty aby zobaczyć różnice czasu</div>
+
+<script>
+    function roznica() {
+        let submit = document.getElementById("submit");
+let output = document.getElementById("output");
+submit.addEventListener("click", () => {
+
+  let data1 = new Date(document.getElementById("data1").value);
+  let data2 = new Date();
+  
+  if (data1.getTime() && data2.getTime()) {
+
+    let timeDifference = data2.getTime() - data1.getTime();
+
+    let hourDifference = Math.floor(timeDifference / (1000 * 3600));
+    let dayDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+    output.innerHTML = `Minęło <span>${dayDifference}</span> dni lub <span>${hourDifference}</span> godzin`;
+  }
+  
+});
+    }
+</script>
+
+</body>
+</html>
